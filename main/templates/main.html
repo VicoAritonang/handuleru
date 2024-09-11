@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handuleru - Membantu Harimu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #008080;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        h1 {
+            margin: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+        .service-card {
+            background-color: white;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .service-info {
+            flex: 1;
+        }
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .service-details {
+            margin-bottom: 10px;
+            color: #555;
+        }
+        .service-details span {
+            font-weight: bold;
+        }
+        .service-image {
+            margin-left: 20px;
+        }
+        .service-image img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        footer {
+            background-color: #008080;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Handuleru - Membantu harimu</h1>
+    </header>
+
+    <div class="container">
+        <div class="service-card">
+            <div class="service-info">
+                <div class="service-title">{{service1Name}}</div>
+                <div class="service-details">
+                    <span>Harga:</span> {{service1Price}}<br>
+                    <span>Deskripsi:</span> {{service1Description}}<br>
+                    <span>Lokasi:</span> {{service1Location}} <br>
+                    <span>Durasi:</span> {{service1Duration}}
+                </div>
+            </div>
+            <div class="service-image">
+                <img src="C:\Users\User\Videos\magus\img1.jpg" alt="Mencuci Sepatu">
+            </div>
+        </div>
+        <div class="service-card">
+            <div class="service-info">
+                <div class="service-title">{{service2Name}}</div>
+                <div class="service-details">
+                    <span>Harga:</span> {{service2Price}}<br>
+                    <span>Deskripsi:</span> {{service2Description}}<br>
+                    <span>Lokasi:</span> {{service2Location}}<br>
+                    <span>Durasi:</span> {{servicec2Duration}}
+                </div>
+            </div>
+            <div class="service-image">
+                <img src="C:\Users\User\Videos\magus\img2.jpg" alt="Makanan diet">
+            </div>
+        </div>
+        <div class="service-card">
+            <div class="service-info">
+                <div class="service-title">{{service3Name}}</div>
+                <div class="service-details">
+                    <span>Harga:</span> {{service3Price}}<br>
+                    <span>Deskripsi:</span> {{service3Description}}<br>
+                    <span>Lokasi:</span> {{service3Location}}<br>
+                    <span>Durasi:</span> {{service3Duration}}
+                </div>
+            </div>
+            <div class="service-image">
+                <img src="C:\Users\User\Videos\magus\img3.jpg" alt="Kursus anak">
+            </div>
+        </div>
+        <div class="service-card">
+            <div class="service-info">
+                <div class="service-title">{{service4Name}}</div>
+                <div class="service-details">
+                    <span>Harga:</span> {{service4Price}}<br>
+                    <span>Deskripsi:</span> {{service4Description}}<br>
+                    <span>Lokasi:</span> {{service4Location}}<br>
+                    <span>Durasi:</span> {{service4Duration}}
+                </div>
+            </div>
+            <div class="service-image">
+                <img src="C:\Users\User\Videos\magus\img4.jpg" alt="Antar jemput kampus">
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Handuleru - Contact Us : +62 2306219083</p>
+    </footer>
+</body>
+</html>

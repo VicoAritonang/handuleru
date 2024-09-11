@@ -29,6 +29,8 @@ setelah mengerjakan directory local, kita harus melakukan push directory local k
 Membuat readme.md
 kita dapat membuat readme.md di directory local kita lalu melakukan push ke git. readme.md berisikan text yang ini.
 
+=========================================================================================================
+Bagan : https://drive.google.com/file/d/1mHQBgEP2a1o0k8wHwq9-yfZmMl9pwWt1/view?usp=sharing
 ==========================================================================================================
 Jelaskan fungsi git dalam pengembangan perangkat lunak!
 Dalam sebuah proyek pengembangan perangkat lunak, kita membutuhkan berbagai keahlian mulai dari membuat design, fungsional, hingga membuat codingannya. Selain itu, setiap bagian dari software tersebut cukup sulit untuk dibuat sehingga kita membutuhkan sebuah tim untuk mengerjakannya. GIt merupakan sebuah Version Control System yang memungkinkan kita mengerjakan sebuah proyek dalam sebuah repository secara bersamaan. Git menyediakan sebuah directory yang dapat diakses oleh sebuah tim dengan berbagai fitur pull, push, clone, dan sebagainya. fitur fitur yang disediakan oleh git sangat berguna untuk proyek pengembangan secara tim. selain itu, kita juga dapat melacak perubahan dan versi setiap project menggunakan git. Git juga memiliki integrasi yang baik dengan banyak software pihak ketiga. oleh karena itu, git sangat berguna dalam pengembangan perangkat lunak secara tim.

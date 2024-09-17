@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -68,9 +69,24 @@
             width: 100%;
             bottom: 0;
         }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
     </style>
 </head>
 <body>
+    {% extends 'base.html' %}
+    {% block content %}
     <header>
         <h1>Handuleru - Membantu harimu</h1>
     </header>
@@ -90,6 +106,7 @@
                 <img src="C:\Users\User\Videos\magus\img1.jpg" alt="Mencuci Sepatu">
             </div>
         </div>
+
         <div class="service-card">
             <div class="service-info">
                 <div class="service-title">{{service2Name}}</div>
@@ -104,6 +121,7 @@
                 <img src="C:\Users\User\Videos\magus\img2.jpg" alt="Makanan diet">
             </div>
         </div>
+
         <div class="service-card">
             <div class="service-info">
                 <div class="service-title">{{service3Name}}</div>
@@ -118,24 +136,47 @@
                 <img src="C:\Users\User\Videos\magus\img3.jpg" alt="Kursus anak">
             </div>
         </div>
+
         <div class="service-card">
             <div class="service-info">
-                <div class="service-title">{{service4Name}}</div>
+                <div class="service-title">Buat Pesanan</div>
                 <div class="service-details">
-                    <span>Harga:</span> {{service4Price}}<br>
-                    <span>Deskripsi:</span> {{service4Description}}<br>
-                    <span>Lokasi:</span> {{service4Location}}<br>
-                    <span>Durasi:</span> {{service4Duration}}
+                    {% if not buat_pesanan %}
+                    <p>Belum ada data pesanan</p>
+                    {% else %}
+                    <table>
+                        <tr>
+                            <th>Jenis Pesanan</th>
+                            <th>Waktu Pemesanan</th>
+                            <th>Keterangan</th>
+                            <th>Jumlah Pesanan</th>
+                        </tr>
+                        {% for pesanan in buat_pesanan %}
+                        <tr>
+                            <td>{{pesanan.nama_pesanan}}</td>
+                            <td>{{pesanan.waktu_pemesanan}}</td>
+                            <td>{{pesanan.Keterangan}}</td>
+                            <td>{{pesanan.jumlah_pesanan}}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    {% endif %}
+                    <br />
+                    <a href="{% url 'main:buat_pesanan' %}">
+                        <button>Tambah Pesanan</button>
+                    </a>
                 </div>
             </div>
-            <div class="service-image">
-                <img src="C:\Users\User\Videos\magus\img4.jpg" alt="Antar jemput kampus">
-            </div>
         </div>
-    </div>
 
+    </div>
     <footer>
         <p>&copy; 2024 Handuleru - Contact Us : +62 2306219083</p>
     </footer>
+    {% endblock content %}
+    
 </body>
+
 </html>
+
+

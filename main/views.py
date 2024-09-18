@@ -51,4 +51,4 @@ def show_xml_by_id(request, id):
 def show_json_by_id(request, id):
     data = BuatPesanan.objects.filter(pk=id)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
-# Create your views here.
+

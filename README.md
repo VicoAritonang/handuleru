@@ -42,6 +42,6 @@ pada sebuah project Django terdapat file python Bernama models.py
 ORM atau Object Relational Mapping adalah sebuah protocol dimana kita bisa menghubungi atau mengakses data base yang menggunakan Bahasa SQL dengan menggunakan Bahasa lain. Models merupakan bagian dari project Django untuk mengatur database dari project. Models pada Django menggunakan python yang mengimport library Django. karena pada Django kita menggunakan Models.py untuk mengakses database, maka hal tersebut sudah termasuk dalam ORM. Bahasa python yang digunakan pada models dapat diartikan sebagai SQL statements pada database. dengan begitu kita relasi antar code dapat dimaksimalkan.
 
 
-## [JAWABAN TUGAS 3](JawabanTugas/README2.MD)
-## [JAWABAN TUGAS 4](JawabanTugas/README3.MD)
+## [JAWABAN TUGAS 3](JawabanTugas/README3.MD)
+## [JAWABAN TUGAS 4](JawabanTugas/README4.MD)
 

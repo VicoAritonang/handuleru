@@ -17,14 +17,25 @@
             color: white;
             text-align: center;
             padding: 1rem;
+            position: relative;
         }
         h1 {
             margin: 0;
         }
         .container {
-            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
             margin: auto;
             padding: 20px;
+        }
+        .left-column {
+            flex: 2;
+            margin-right: 20px;
+        }
+        .right-column {
+            flex: 1;
+            position: relative;
         }
         .service-card {
             background-color: white;
@@ -82,63 +93,89 @@
             background-color: #f2f2f2;
             color: #333;
         }
+        button {
+            padding: 10px 15px;
+            background-color: #008080;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #006666;
+        }
+        .logout-button {
+            position: absolute;
+            top: 15px;
+            right: 30px;
+        }
+        .last-login {
+            margin-top: 10px;
+            text-align: right;
+        }
     </style>
 </head>
 <body>
     {% extends 'base.html' %}
     {% block content %}
     <header>
-        <h1>Handuleru - Membantu harimu</h1>
+        <h1>Handuleru - Membantu Harimu</h1>
+        <div class="logout-button">
+            <a href="{% url 'main:logout' %}">
+                <button>Logout</button>
+            </a>
+        </div>
     </header>
 
     <div class="container">
-        <div class="service-card">
-            <div class="service-info">
-                <div class="service-title">{{service1Name}}</div>
-                <div class="service-details">
-                    <span>Harga:</span> {{service1Price}}<br>
-                    <span>Deskripsi:</span> {{service1Description}}<br>
-                    <span>Lokasi:</span> {{service1Location}} <br>
-                    <span>Durasi:</span> {{service1Duration}}
+        <div class="left-column">
+            <div class="service-card">
+                <div class="service-info">
+                    <div class="service-title">{{service1Name}}</div>
+                    <div class="service-details">
+                        <span>Harga:</span> {{service1Price}}<br>
+                        <span>Deskripsi:</span> {{service1Description}}<br>
+                        <span>Lokasi:</span> {{service1Location}} <br>
+                        <span>Durasi:</span> {{service1Duration}}
+                    </div>
+                </div>
+                <div class="service-image">
+                    <img src="https://shoesandcare.com/storage/gambar_post/fileName1636297419.jpg" alt="Mencuci Sepatu">
                 </div>
             </div>
-            <div class="service-image">
-                <img src="C:\Users\User\Videos\magus\img1.jpg" alt="Mencuci Sepatu">
-            </div>
-        </div>
 
-        <div class="service-card">
-            <div class="service-info">
-                <div class="service-title">{{service2Name}}</div>
-                <div class="service-details">
-                    <span>Harga:</span> {{service2Price}}<br>
-                    <span>Deskripsi:</span> {{service2Description}}<br>
-                    <span>Lokasi:</span> {{service2Location}}<br>
-                    <span>Durasi:</span> {{servicec2Duration}}
+            <div class="service-card">
+                <div class="service-info">
+                    <div class="service-title">{{service2Name}}</div>
+                    <div class="service-details">
+                        <span>Harga:</span> {{service2Price}}<br>
+                        <span>Deskripsi:</span> {{service2Description}}<br>
+                        <span>Lokasi:</span> {{service2Location}}<br>
+                        <span>Durasi:</span> {{service2Duration}}
+                    </div>
+                </div>
+                <div class="service-image">
+                    <img src="https://cdn.idntimes.com/content-images/community/2020/08/gado-gado-salad-recipe-header-338345d5a375ab5404b893ce10a54fea.jpg" alt="Makanan diet">
                 </div>
             </div>
-            <div class="service-image">
-                <img src="C:\Users\User\Videos\magus\img2.jpg" alt="Makanan diet">
-            </div>
-        </div>
 
-        <div class="service-card">
-            <div class="service-info">
-                <div class="service-title">{{service3Name}}</div>
-                <div class="service-details">
-                    <span>Harga:</span> {{service3Price}}<br>
-                    <span>Deskripsi:</span> {{service3Description}}<br>
-                    <span>Lokasi:</span> {{service3Location}}<br>
-                    <span>Durasi:</span> {{service3Duration}}
+            <div class="service-card">
+                <div class="service-info">
+                    <div class="service-title">{{service3Name}}</div>
+                    <div class="service-details">
+                        <span>Harga:</span> {{service3Price}}<br>
+                        <span>Deskripsi:</span> {{service3Description}}<br>
+                        <span>Lokasi:</span> {{service3Location}}<br>
+                        <span>Durasi:</span> {{service3Duration}}
+                    </div>
+                </div>
+                <div class="service-image">
+                    <img src="https://img-cdn.medkomtek.com/cQRqfalzCvKIsjQFDg5t31-v4CE=/0x0/smart/filters:quality(100):format(webp)/article/QenbmBV2zPGEJURclV3-u/original/071686200_1577941293-Manfaat-Les-bagi-Perkembangan-Otak-Anak-By-anek-soowannaphoom-shutterstock.jpg" alt="Kursus anak">
                 </div>
             </div>
-            <div class="service-image">
-                <img src="C:\Users\User\Videos\magus\img3.jpg" alt="Kursus anak">
-            </div>
         </div>
-
-        <div class="service-card">
-            <div class="service-info">
+        <div class="right-column">
+            <div class="service-card">
                 <div class="service-title">Buat Pesanan</div>
                 <div class="service-details">
                     {% if not buat_pesanan %}
@@ -150,6 +187,7 @@
                             <th>Waktu Pemesanan</th>
                             <th>Keterangan</th>
                             <th>Jumlah Pesanan</th>
+                            <th>Aksi</th>
                         </tr>
                         {% for pesanan in buat_pesanan %}
                         <tr>
@@ -157,26 +195,33 @@
                             <td>{{pesanan.waktu_pemesanan}}</td>
                             <td>{{pesanan.keterangan}}</td>
                             <td>{{pesanan.jumlah_pesanan}}</td>
+                            <td>
+                                <a href="{% url 'main:hapus_pesanan' pesanan.id %}">Hapus</a>
+                            </td>
                         </tr>
                         {% endfor %}
                     </table>
+                        <form action="{% url 'main:hapus_semua_pesanan' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus semua pesanan?')">Hapus Semua Pesanan</button>
+                        </form>
                     {% endif %}
                     <br />
                     <a href="{% url 'main:buat_pesanan' %}">
                         <button>Tambah Pesanan</button>
-                    </a>
+                    </a>  
                 </div>
             </div>
+            <div class="pemesan">
+                <h5>Nama pemesan: {{name}}</h5>
+                <h5>Sesi terakhir login: {{ last_login }}</h5>
+            </div>
         </div>
-
     </div>
+
     <footer>
         <p>&copy; 2024 Handuleru - Contact Us : +62 2306219083</p>
     </footer>
     {% endblock content %}
-    
 </body>
-
 </html>
-
-

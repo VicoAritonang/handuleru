@@ -3,22 +3,53 @@ from main.forms import FormPesanan
 from main.models import BuatPesanan
 from django.http import HttpResponse
 from django.core import serializers
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import authenticate, login
+from django.contrib.auth import logout
+import datetime
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect, get_object_or_404
+from .models import BuatPesanan
 
-def buat_pesanan(request):
-    form = FormPesanan(request.POST or None)
 
-    if form.is_valid() and request.method == "POST":
-        form.save()
-        return redirect('main:show_main')
+def register(request):
+    form = UserCreationForm()
 
-    context = {'form': form}
-    return render(request, "buat_pesanan.html", context)
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your account has been successfully created!')
+            return redirect('main:login')
+    context = {'form':form}
+    return render(request, 'register.html', context)
+
+def login_user(request):
+   if request.method == 'POST':
+      form = AuthenticationForm(data=request.POST)
+
+      if form.is_valid():
+        user = form.get_user()
+        login(request, user)
+        response = HttpResponseRedirect(reverse("main:show_main"))
+        response.set_cookie('last_login', str(datetime.datetime.now()))
+        return response
+
+   else:
+      form = AuthenticationForm(request)
+   context = {'form': form}
+   return render(request, 'login.html', context)
 
 
+@login_required(login_url='/login')
 def show_main(request):
     buat_pesanan = BuatPesanan.objects.all()
     context = {
-        
+        'name': request.user.username,
         'service1Name' : 'Mencuci Sepatu',
         'service1Price': 'Rp 75.000',
         'service1Description': 'Kami menggunakan tenaga profesional untuk hasil sepatu yang bersih dan aman',
@@ -34,7 +65,8 @@ def show_main(request):
         'service3Description': 'Kami menggunakan tentor profesional untuk mengajari anak SD/SMP/SMA',
         'service3Location' : 'Depok, Margonda',
         'service3Duration' : '1 Minggu (3 Pertemuan)',
-        'buat_pesanan': buat_pesanan
+        'buat_pesanan': buat_pesanan,
+        'last_login': request.COOKIES['last_login'],
     }
 
     return render(request, "main.html", context)
@@ -51,4 +83,31 @@ def show_xml_by_id(request, id):
 def show_json_by_id(request, id):
     data = BuatPesanan.objects.filter(pk=id)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+def buat_pesanan(request):
+    form = FormPesanan(request.POST or None)
+
+    if form.is_valid() and request.method == "POST":
+        buat_pesanan = form.save(commit=False)
+        buat_pesanan = request.user
+        buat_pesanan.save()
+        return redirect('main:show_main')
+
+    context = {'form': form}
+    return render(request, "buat_pesanan.html", context)
+
+def logout_user(request):
+    logout(request)
+    response = HttpResponseRedirect(reverse('main:login'))
+    response.delete_cookie('last_login')
+    return response
+
+def hapus_pesanan(request, pesanan_id):
+    pesanan = get_object_or_404(BuatPesanan, id=pesanan_id)
+    pesanan.delete()
+    return redirect('main:show_main') 
+def hapus_semua_pesanan(request):
+    if request.method == 'POST':
+        BuatPesanan.objects.all().delete()
+        return redirect('main:show_main')
 

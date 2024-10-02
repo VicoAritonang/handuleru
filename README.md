@@ -45,3 +45,31 @@ ORM atau Object Relational Mapping adalah sebuah protocol dimana kita bisa mengh
 ## [JAWABAN TUGAS 3](JawabanTugas/README3.MD)
 ## [JAWABAN TUGAS 4](JawabanTugas/README4.MD)
 
+
+# Jawaban Tugas 5
+## Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
+dalam CSS selektor pengambilan CSS Selector akan memprioritaskan ID selector seperti #header sebagai prioritas pertama dalam me run sebuah file, setelah itu CSS selector akan memilih class atau pseudo class sebagai prioritas kedua. untuk prioritas ketiga, CSS selector akan mengambil element / pseudo element seperti div. jika Selector menemukan spesifikasi yang sama dalam file, selector akan mengutamakan spesifikasi yang dideklarasikan paling akhir (Cascading). selain itu selector juga memiliki aturan !important yang akan didahulukan dari semua spesifikasi. jika terdapat lebih dari 1 important maka akan mengikuti aturan cascading juga.
+
+## Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design!
+responsice design sangat penting dalam pengembangan aplikasi web karena pengguna bisa saja mengakses aplikasi dari desktop maupun mobil, horizontal ataupun vertikal. responsive design akan membuat aplikasi fit in pada setiap perangkat pengguna sehingga akna meningkatkan user experience. responsive design juga membuat pengguna dapat lebih interaktif dengan aplikasi karena pengguna dapat melakukan zoom, pencarian dan sebagainya dengan baik sehingga dapat meningkatkan pengguna juga. aplikasi yang belum menerapkan responsive design biasanya aplikasi tugas anak sekolah ataupun aplikasi lama pemerintahan. aplikasi yang sudah menerapkannya seperti instagram dan kebanyakan medsos lainnya.
+
+
+## Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
+dalam CSS margin, border, dan padding adalah cara yang dapat digunakan untuk mengatur sebuah blok pada file html. margin mengatur bagian paling luar dari sebuah blok. margin dapat digunakan untuk hal seperti mengatur area blok. setelah itu ada border. border adalah bagian terluar dari blok sebelum margin. blok biasanya digunakan untuk mengatur ketebalan warna antar margin dengan tulisan didalamnya. selanjutnya adalah padding, padding digunakan untuk memberikan area atau latar belakang tempat kita memasukkan teks atau gambar. padding adalah area isi konten dalam sebuah blok.
+untuk memanggil margin kita dapat menggunakan
+'''
+    margin : 50 px; 
+'''
+artinya bagian kiri kanan atas bawah margin berjarak 50 px
+
+untuk memanggil border kita dapat menggunakan
+'''
+border : 1px solid #000;
+'''
+artinya border memiliki ketebalan 1px dan warna #000. 
+
+untuk memanggil padding kita dapat menggunakan
+'''
+ padding: 10px;
+'''
+artinya konten berada pada jarak 10 px dari border

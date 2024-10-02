@@ -73,3 +73,6 @@ untuk memanggil padding kita dapat menggunakan
  padding: 10px;
 '''
 artinya konten berada pada jarak 10 px dari border
+
+##  Jelaskan konsep flex box dan grid layout beserta kegunaannya!
+flexbox dan grid layout merupakan cara untuk menyusun sebuah layout dalam CSS. flexbox akan menyusun elemen dalam satu dimensi / arah / 1D. dengan flex box dapat menyusun konten dari css secara vertikal dari atas kebawah ataupun secara horizontal dari kiri ke kanan. dengan flex box setiap kita menambahkan elemen dalam css, dia akan disusun secara horizontal atau vertikal. grid layout adalah cara menyusun elemen dari css dalam 2 dimensi. kita dapat membuat display kita seperti matrix yang memiliki kolom dan baris. dengan grid layout, kita dapat menyusun konten kita di area yang kita mau hanya dengan memberikan informasi mengenai baris dan kolom nya saja. flex box cocok untuk menyusun suatu hal yang dapat bertambah terus menerus seperti tambah pesanan atau semacamnya sedangkan grid cocok untuk menyusun sebuah display dengan design yang sudah ditetapkan 

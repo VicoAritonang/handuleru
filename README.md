@@ -76,3 +76,13 @@ artinya konten berada pada jarak 10 px dari border
 
 ##  Jelaskan konsep flex box dan grid layout beserta kegunaannya!
 flexbox dan grid layout merupakan cara untuk menyusun sebuah layout dalam CSS. flexbox akan menyusun elemen dalam satu dimensi / arah / 1D. dengan flex box dapat menyusun konten dari css secara vertikal dari atas kebawah ataupun secara horizontal dari kiri ke kanan. dengan flex box setiap kita menambahkan elemen dalam css, dia akan disusun secara horizontal atau vertikal. grid layout adalah cara menyusun elemen dari css dalam 2 dimensi. kita dapat membuat display kita seperti matrix yang memiliki kolom dan baris. dengan grid layout, kita dapat menyusun konten kita di area yang kita mau hanya dengan memberikan informasi mengenai baris dan kolom nya saja. flex box cocok untuk menyusun suatu hal yang dapat bertambah terus menerus seperti tambah pesanan atau semacamnya sedangkan grid cocok untuk menyusun sebuah display dengan design yang sudah ditetapkan 
+
+## Jelaskan checklist
+### Implementasikan fungsi untuk menghapus dan mengedit product.
+untuk membuat fungsi mengedit produk kita bisa membuat file html edit_produk.html untuk template dari fungsi edit_produk. lalu kita dapat membuat fungsi edit produk dengan membuat sebuah fungsi yang meminta parameter dan id lalu men save form dengan id tersebut dan mereturn nya kembali. untuk menghapus pesanan kita dapat membuat fungsi hapus_pesanan di views.py lalu menggunakan method .delete() untuk menghapus pesanan dengan id tertentu. tambahkan tombol di main.html lalu tambahkan path di urls.py dengan meminta uuid dari setiap pesanan
+
+## Kustomisasi desain pada template HTML yang telah dibuat pada tugas-tugas sebelumnya menggunakan CSS atau CSS framework
+saya menggunakan css tailwind untuk mendesifn file html saya seperti buat_pesanan, edit_pesanan, main.html, hingga register akun. saya menggunakan css sederhana untuk membuat container dan menyusun nya secara sederhana dibagian tengah. untuk main.html bagian menyusun kartu, saya menggunakan grid karena menurut saya lebih cantik. selanjutnya saya membuat card_pesanan.html sebagai template dari pesanan yang telah dibuat. saya mengatur margin, padding, dan border sedemikian rupa agar bisa menampilkan web dengan baik.
+
+## Buatlah navigation bar (navbar) untuk fitur-fitur pada aplikasi yang responsive terhadap perbedaan ukuran device, khususnya mobile dan desktop.
+untuk membuat sebuah navbar yang dapat beradaptasi dengan ukuran device khususnya mobile dan desktop, saya membuat penyesuaian css untuk keduanya. saya juga hanya menampilkan home, kategori, produk, dan keranjang sebagai tulisan tanpa fungsi tombol karena saya belum memikirkan langkah selanjutnya.

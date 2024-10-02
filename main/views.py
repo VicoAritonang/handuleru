@@ -12,9 +12,21 @@ import datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import get_object_or_404
 from .models import BuatPesanan
+from django.shortcuts import reverse
 
+def buat_pesanan(request):
+    form = FormPesanan(request.POST or None)
+
+    if form.is_valid() and request.method == "POST":
+        buat_pesanan = form.save(commit=False)
+        buat_pesanan.user = request.user
+        buat_pesanan.save()
+        return redirect('main:show_main')
+
+    context = {'form': form}
+    return render(request, "buat_pesanan.html", context)
 
 def register(request):
     form = UserCreationForm()
@@ -84,17 +96,7 @@ def show_json_by_id(request, id):
     data = BuatPesanan.objects.filter(pk=id)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
-def buat_pesanan(request):
-    form = FormPesanan(request.POST or None)
 
-    if form.is_valid() and request.method == "POST":
-        buat_pesanan = form.save(commit=False)
-        buat_pesanan = request.user
-        buat_pesanan.save()
-        return redirect('main:show_main')
-
-    context = {'form': form}
-    return render(request, "buat_pesanan.html", context)
 
 def logout_user(request):
     logout(request)
@@ -102,12 +104,23 @@ def logout_user(request):
     response.delete_cookie('last_login')
     return response
 
-def hapus_pesanan(request, pesanan_id):
-    pesanan = get_object_or_404(BuatPesanan, id=pesanan_id)
-    pesanan.delete()
-    return redirect('main:show_main') 
 def hapus_semua_pesanan(request):
     if request.method == 'POST':
         BuatPesanan.objects.all().delete()
         return redirect('main:show_main')
+    
+def edit_pesanan(request, id):
+    pesanan = BuatPesanan.objects.get(pk=id)
+    form = FormPesanan(request.POST or None, instance=pesanan)
+    if form.is_valid() and request.method == "POST":
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+    context = {'form': form}
+    return render(request, "edit_pesanan.html", context)
+
+def delete_pesanan(request, id):
+    pesanan = BuatPesanan.objects.get(pk = id)
+    pesanan.delete()
+    return HttpResponseRedirect(reverse('main:show_main'))
+
 

@@ -11,5 +11,5 @@ class BuatPesanan(models.Model):
     jumlah_pesanan = models.IntegerField()
 
     @property
-    def is_mood_strong(self):
+    def pesanan_banyak(self):
         return self.jumlah_pesanan > 5

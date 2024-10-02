@@ -1,125 +1,165 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Handuleru - Membantu Harimu</title>
+    <title>Handuleru</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
         }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+        }
+
         header {
-            background-color: #008080;
+            background-color: #3cbf3a;
             color: white;
-            text-align: center;
             padding: 1rem;
+            text-align: center;
             position: relative;
         }
-        h1 {
+
+        header h1 {
             margin: 0;
         }
-        .container {
-            display: flex;
-            justify-content: space-between;
-            width: 90%;
-            margin: auto;
-            padding: 20px;
+
+        .logout-button {
+            position: absolute;
+            top: 20px;
+            right: 30px;
         }
-        .left-column {
-            flex: 2;
-            margin-right: 20px;
-        }
-        .right-column {
-            flex: 1;
-            position: relative;
-        }
-        .service-card {
-            background-color: white;
-            margin-bottom: 20px;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .service-info {
-            flex: 1;
-        }
-        .service-title {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #333;
-        }
-        .service-details {
-            margin-bottom: 10px;
-            color: #555;
-        }
-        .service-details span {
-            font-weight: bold;
-        }
-        .service-image {
-            margin-left: 20px;
-        }
-        .service-image img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-        footer {
-            background-color: #008080;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
-        th {
-            background-color: #f2f2f2;
-            color: #333;
-        }
-        button {
-            padding: 10px 15px;
-            background-color: #008080;
-            color: white;
+
+        .logout-button button {
+            background-color: #f44336;
             border: none;
+            padding: 10px 20px;
+            color: white;
             cursor: pointer;
             border-radius: 5px;
         }
-        button:hover {
-            background-color: #006666;
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
         }
-        .logout-button {
-            position: absolute;
-            top: 15px;
-            right: 30px;
+
+        .top-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #eceff1;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        .last-login {
-            margin-top: 10px;
+
+        .top-info div {
+            flex: 1;
+            padding: 0 1rem;
+            text-align: center;
+        }
+
+        .top-info div:last-child {
             text-align: right;
+        }
+
+        .pesanan-cards {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .pesanan-card {
+            background-color: rgb(198, 84, 84);
+            width: calc(33.333% - 20px);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .pesanan-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .pesanan-card p {
+            margin: 10px 0;
+            font-size: 0.9rem;
+        }
+
+        .pesanan-card .intensity {
+            margin-top: 1rem;
+        }
+
+        .pesanan-card .progress-bar {
+            background-color: #00990d;
+            height: 8px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+
+        .progress-bar div {
+            background-color: #64f6a3;
+            height: 100%;
+            width: 0;
+        }
+
+        .action-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .action-buttons button {
+            background-color: #00ff40;
+            border: none;
+            padding: 8px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            color: white;
+        }
+
+        .action-buttons button:hover {
+            background-color: #97f500;
+        }
+
+        .add-buat-pesanan {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 1rem;
+            background-color: #3abf3c;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .add-buat-pesanan:hover {
+            background-color: #309f5e;
         }
     </style>
 </head>
 <body>
     {% extends 'base.html' %}
     {% block content %}
+    {% include 'navbar.html' %}
+
     <header>
-        <h1>Handuleru - Membantu Harimu</h1>
+        <h1> Handuleru </h1>
         <div class="logout-button">
             <a href="{% url 'main:logout' %}">
                 <button>Logout</button>
@@ -128,100 +168,75 @@
     </header>
 
     <div class="container">
-        <div class="left-column">
-            <div class="service-card">
-                <div class="service-info">
-                    <div class="service-title">{{service1Name}}</div>
-                    <div class="service-details">
-                        <span>Harga:</span> {{service1Price}}<br>
-                        <span>Deskripsi:</span> {{service1Description}}<br>
-                        <span>Lokasi:</span> {{service1Location}} <br>
-                        <span>Durasi:</span> {{service1Duration}}
-                    </div>
-                </div>
+        <div class="top-info">
+            <div>
+                <strong>{{service1Name}}</strong><br>
+                harga : {{service1Price}} <br>
+                deskripsi : {{service1Description}} <br>
+                Lokasi : {{service1Location}} <br>
+                durasi : {{service3Duration}} <br>
                 <div class="service-image">
                     <img src="https://shoesandcare.com/storage/gambar_post/fileName1636297419.jpg" alt="Mencuci Sepatu">
                 </div>
+                
             </div>
-
-            <div class="service-card">
-                <div class="service-info">
-                    <div class="service-title">{{service2Name}}</div>
-                    <div class="service-details">
-                        <span>Harga:</span> {{service2Price}}<br>
-                        <span>Deskripsi:</span> {{service2Description}}<br>
-                        <span>Lokasi:</span> {{service2Location}}<br>
-                        <span>Durasi:</span> {{service2Duration}}
-                    </div>
-                </div>
+            <div>
+                <strong>{{service2Name}}</strong><br>
+                harga : {{service2Price}} <br>
+                deskripsi : {{service2Description}} <br>
+                Lokasi : {{service2Location}} <br>
+                durasi : {{service2Duration}} <br>
                 <div class="service-image">
                     <img src="https://cdn.idntimes.com/content-images/community/2020/08/gado-gado-salad-recipe-header-338345d5a375ab5404b893ce10a54fea.jpg" alt="Makanan diet">
                 </div>
             </div>
-
-            <div class="service-card">
-                <div class="service-info">
-                    <div class="service-title">{{service3Name}}</div>
-                    <div class="service-details">
-                        <span>Harga:</span> {{service3Price}}<br>
-                        <span>Deskripsi:</span> {{service3Description}}<br>
-                        <span>Lokasi:</span> {{service3Location}}<br>
-                        <span>Durasi:</span> {{service3Duration}}
-                    </div>
-                </div>
+            <div>
+                <strong>{{service3Name}}</strong><br>
+                harga : {{service3Price}} <br>
+                deskripsi : {{service3Description}} <br>
+                Lokasi : {{service3Location}} <br>
+                durasi : {{service3Duration}} <br>
                 <div class="service-image">
                     <img src="https://img-cdn.medkomtek.com/cQRqfalzCvKIsjQFDg5t31-v4CE=/0x0/smart/filters:quality(100):format(webp)/article/QenbmBV2zPGEJURclV3-u/original/071686200_1577941293-Manfaat-Les-bagi-Perkembangan-Otak-Anak-By-anek-soowannaphoom-shutterstock.jpg" alt="Kursus anak">
                 </div>
             </div>
+            <div>
+                <strong>Last Login:</strong><br>
+                2024-09-18 22:21:20.299769
+            </div>
         </div>
-        <div class="right-column">
-            <div class="service-card">
-                <div class="service-title">Buat Pesanan</div>
-                <div class="service-details">
-                    {% if not buat_pesanan %}
-                    <p>Belum ada data pesanan</p>
-                    {% else %}
-                    <table>
-                        <tr>
-                            <th>Jenis Pesanan</th>
-                            <th>Waktu Pemesanan</th>
-                            <th>Keterangan</th>
-                            <th>Jumlah Pesanan</th>
-                            <th>Aksi</th>
-                        </tr>
-                        {% for pesanan in buat_pesanan %}
-                        <tr>
-                            <td>{{pesanan.nama_pesanan}}</td>
-                            <td>{{pesanan.waktu_pemesanan}}</td>
-                            <td>{{pesanan.keterangan}}</td>
-                            <td>{{pesanan.jumlah_pesanan}}</td>
-                            <td>
-                                <a href="{% url 'main:hapus_pesanan' pesanan.id %}">Hapus</a>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </table>
-                        <form action="{% url 'main:hapus_semua_pesanan' %}" method="post">
-                            {% csrf_token %}
-                            <button type="submit" onclick="return confirm('Apakah Anda yakin ingin menghapus semua pesanan?')">Hapus Semua Pesanan</button>
-                        </form>
-                    {% endif %}
-                    <br />
-                    <a href="{% url 'main:buat_pesanan' %}">
-                        <button>Tambah Pesanan</button>
-                    </a>  
+
+        <div class="pesanan-cards">
+            {% for pesanan in buat_pesanan %}
+            <div class="pesanan-card">
+                <h3>{{ pesanan.nama_pesanan }}</h3>
+                <small>{{ pesanan.waktu_pemesanan }}</small>
+                <p>{{pesanan.keterangan }}</p>
+                <div class="intensity">
+                    <strong>Jumlah Pesanan</strong>
+                    <div class="progress-bar">
+                        <div style="width: {{ pesanan.jumlah_pesanan }}%;"></div>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <a href="{% url 'main:edit_pesanan' pesanan.id %}" class="edit_pesanan">
+                        <button>
+                            Edit Pesanan
+                        </button>
+                    </a>
+                    <a href="{% url 'main:delete_pesanan' pesanan.id %}" class="delete_pesanan">
+                        <button>
+                            Hapus Pesanan
+                        </button>
+                    </a>
                 </div>
             </div>
-            <div class="pemesan">
-                <h5>Nama pemesan: {{name}}</h5>
-                <h5>Sesi terakhir login: {{ last_login }}</h5>
-            </div>
+            {% endfor %}
         </div>
+
+        <a href="{% url 'main:buat_pesanan' %}" class="add-buat-pesanan">Tambah Pesanan</a>
     </div>
 
-    <footer>
-        <p>&copy; 2024 Handuleru - Contact Us : +62 2306219083</p>
-    </footer>
     {% endblock content %}
 </body>
 </html>

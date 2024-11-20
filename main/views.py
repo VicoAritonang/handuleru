@@ -27,14 +27,20 @@ def create_pesanan_flutter(request):
     if request.method == 'POST':
 
         data = json.loads(request.body)
-        pesanan = BuatPesanan.objects.create(
-            user=request.user,
-            nama_pesanan=data["nama_pesanan"],
-            jummlah_pesanan=int(data["jumlah_pesanan"]),
-            keterangan=data["keterangan"]
+        print(data["nama_pesanan"])
+        print(data["keterangan"])
+        print(data["jumlah_pesanan"])
+        user = request.user
+
+        pesanan_baru = BuatPesanan(
+            nama_pesanan=data["nama_pesanan"], 
+            keterangan=data["keterangan"],
+            jumlah_pesanan=data["jumlah_pesanan"],
+            user=user
         )
 
-        pesanan.save()
+        print("masuk disini")
+        pesanan_baru.save()
 
         return JsonResponse({"status": "success"}, status=200)
     else:

@@ -3,7 +3,7 @@ from main.views import show_main, buat_pesanan, show_xml, show_json, show_xml_by
 from main.views import register
 from main.views import login_user, delete_pesanan
 from main.views import logout_user, edit_pesanan
-from main.views import hapus_semua_pesanan
+from main.views import hapus_semua_pesanan, create_pesanan_flutter
 
 
 app_name = 'main'
@@ -22,5 +22,6 @@ urlpatterns = [
     path('edit-pesanan/<uuid:id>', edit_pesanan, name='edit_pesanan'),
     path('delete/<uuid:id>', delete_pesanan, name='delete_pesanan'),
     path('buat-pesanan-ajax', buat_pesanan_ajax, name='buat_pesanan_ajax'),
+    path('create-flutter/', create_pesanan_flutter, name='create_pesanan_flutter'),
 
 ]

@@ -18,6 +18,29 @@ from django.shortcuts import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.utils.html import strip_tags
+import json
+from django.http import JsonResponse
+
+    
+@csrf_exempt
+def create_pesanan_flutter(request):
+    if request.method == 'POST':
+
+        data = json.loads(request.body)
+        pesanan = BuatPesanan.objects.create(
+            user=request.user,
+            nama_pesanan=data["nama_pesanan"],
+            jummlah_pesanan=int(data["jumlah_pesanan"]),
+            keterangan=data["keterangan"]
+        )
+
+        pesanan.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
+
+
 
 def buat_pesanan(request):
     form = FormPesanan(request.POST or None)
